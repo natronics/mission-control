@@ -1,7 +1,17 @@
 language: node_js
 node_js:
   - "node"
+
+before_install:
+  - rvm use 2.2.4 --install --fuzzy
+
 install:
   - npm install
+  - gem install --no-document jekyll
+
 script:
   - make
+  - jekyll build
+
+after_success:
+  - ./deploy.sh

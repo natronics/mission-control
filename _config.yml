@@ -1,0 +1,9 @@
+exclude:
+  - README.markdown
+  - LICENSE
+  - Makefile
+  - main.js
+  - node_modules
+  - package.json
+  - deploy.sh
+
