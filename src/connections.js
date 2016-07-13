@@ -2,9 +2,9 @@ import React from 'react';
 import Select from 'react-select';
 
 const SERVICES = [
-    { value: "ws://telemetry/",         label: "stream:telemetry.psas.local",   type: "telemetry" },
-    { value: "ws://localhost:8080",     label: "stream:localhost:8080",         type: "telemetry" },
-    { value: "http://localhost:5000",   label: "control:localhost:5000",        type: "api" }
+    { value: "telemetry/",     label: "telemetry.psas.local", type: "telemetry" },
+    { value: "localhost:8080", label: "localhost:8080",       type: "telemetry" },
+    { value: "localhost:5000", label: "localhost:5000",       type: "control" }
 ];
 
 var ConnectionField = React.createClass({

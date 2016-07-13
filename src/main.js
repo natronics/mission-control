@@ -1,15 +1,16 @@
-// main.js
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Select = require('react-select');
-var Style = require('./style/style.sass');
-var SelectStyle = require('react-select/dist/react-select.min.css');
-
-var ConnectionSelect = require('./connections.js');
-
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Style from './style/style.sass';
+import SelectStyle from 'react-select/dist/react-select.min.css';
+import ConnectionSelect from './connections.js';
+import Data from './telemetry.js';
 
 ReactDOM.render(
   <ConnectionSelect/>,
   document.getElementById('connections')
+);
+
+ReactDOM.render(
+  <Data/>,
+  document.getElementById('data')
 );
