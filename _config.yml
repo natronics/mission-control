@@ -6,4 +6,4 @@ exclude:
   - node_modules
   - package.json
   - deploy.sh
-
+  - src
