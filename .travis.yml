@@ -10,7 +10,7 @@ install:
   - gem install --no-document jekyll
 
 script:
-  - make
+  - make production
   - jekyll build
 
 after_success:

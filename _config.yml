@@ -7,3 +7,5 @@ exclude:
   - package.json
   - deploy.sh
   - src
+  - mission-control.js.map
+  - webpack.config.js
