@@ -7,7 +7,7 @@ mission-control.js: $(SRC)
 	$(CC) --progress
 
 production:
-	$(CC) --progress -p
+	$(CC) -p
 
 clean:
 	rm -f mission-control.js
