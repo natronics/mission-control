@@ -10,10 +10,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['babel']
-      }
+      { test: /\.js$/, loaders: ['babel'] },
+      { test: /\.css$/, loader: "style-loader!css-loader" }
     ],
   },
   plugins: [
