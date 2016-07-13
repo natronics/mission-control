@@ -2,7 +2,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Select = require('react-select');
-var style = require('react-select/dist/react-select.min.css');
+var Style = require('./style/style.sass');
+var SelectStyle = require('react-select/dist/react-select.min.css');
 
 var connections = [
     { value: "ws://telemtry/", label: "stream:telemtry.psas.local" },

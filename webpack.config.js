@@ -1,5 +1,13 @@
 path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const sassLoaders = [
+  'css-loader',
+  'postcss-loader',
+  'sass-loader?indentedSyntax=sass&includePaths[]=' + path.resolve(__dirname, './src')
+]
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -17,7 +25,8 @@ module.exports = {
           presets: ['es2015']
         }
       },
-      { test: /\.css$/, loader: "style-loader!css-loader" }
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      { test: /\.sass$/, loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!')) }
     ],
   },
   plugins: [
@@ -25,7 +34,8 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
-    })
+    }),
+    new ExtractTextPlugin('style.css')
   ],
 };
 

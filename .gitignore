@@ -38,4 +38,5 @@ jspm_packages
 
 mission-control.js
 *.map
+style.css
 _site

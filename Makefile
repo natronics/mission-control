@@ -1,9 +1,11 @@
 CC=node_modules/webpack/bin/webpack.js
-SRC=$(wildcard src/*.js)
+JS=$(wildcard src/*.js)
+SASS=$(wildcard src/style/*.sass)
+
 
 all: mission-control.js
 
-mission-control.js: $(SRC)
+mission-control.js: $(JS) $(SASS)
 	$(CC) --progress
 
 production:
@@ -12,4 +14,5 @@ production:
 clean:
 	rm -f mission-control.js
 	rm -f *.map
+	rm -f style.css
 	rm -rf _site
