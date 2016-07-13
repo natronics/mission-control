@@ -6,8 +6,9 @@ var Style = require('./style/style.sass');
 var SelectStyle = require('react-select/dist/react-select.min.css');
 
 var connections = [
-    { value: "ws://telemtry/", label: "stream:telemtry.psas.local" },
-    { value: "ws://localhost:5000", label: "stream:localhost:5000" }
+    { value: "ws://telemetry/",         label: "stream:telemetry.psas.local",   type: "telemetry" },
+    { value: "ws://localhost:8080",     label: "stream:localhost:8080",         type: "telemetry" },
+    { value: "http://localhost:5000",   label: "control:localhost:5000",        type: "api" }
 ];
 
 function handleChange(val) {
@@ -42,8 +43,10 @@ var MultiSelectField = React.createClass({
 
 ReactDOM.render(
   <div>
-    <span>Connection:</span>
-    <MultiSelectField/>
+    <span className="label">Connection:</span>
+    <div className="column">
+      <MultiSelectField/>
+    </div>
   </div>,
   document.getElementById('connections')
 );

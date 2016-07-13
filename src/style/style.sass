@@ -1,4 +1,30 @@
 @import "~bulma/bulma"
 
+$slate: #89b
 header
-  background: #abd
+  background: $slate
+  border-bottom: 3px solid darken($slate, 10%)
+  padding: 0.5em
+
+  h1
+    @extend .title
+    color: #fff
+    margin-bottom: 8px
+
+  #connections>div
+    @extend .columns
+
+    span.label
+      display: block
+      color: #fff
+      font-weight: 400
+      padding-top: 1.35em
+      @extend .column
+      @extend .is-one-quarter
+      @extend .has-text-right
+
+    .Select-input
+      height: 22px
+
+    .Select-value
+      margin-top: 3px
