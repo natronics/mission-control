@@ -4,27 +4,37 @@ $slate: #89b
 header
   background: $slate
   border-bottom: 3px solid darken($slate, 10%)
-  padding: 0.5em
+  padding: 0.5em 0.5em 0 0.5em
+  @extend .hero
 
   h1
     @extend .title
     color: #fff
-    margin-bottom: 8px
 
-  #connections>div
-    @extend .columns
+#tabs
+  @extend .tabs
+  @extend .is-boxed
 
-    span.label
-      display: block
-      color: #fff
-      font-weight: 400
-      padding-top: 1.35em
-      @extend .column
-      @extend .is-one-quarter
-      @extend .has-text-right
+main
+  section
+    @extend .section
 
-    .Select-input
-      height: 22px
+  .container>h2
+    @extend .title
 
-    .Select-value
-      margin-top: 3px
+#connections>div
+  @extend .columns
+
+  span.label
+    display: block
+    font-weight: 400
+    padding-top: 1.35em
+    @extend .column
+    @extend .is-one-quarter
+    @extend .has-text-right
+
+.Select-input
+  height: 22px
+
+.Select-value
+  margin-top: 3px
