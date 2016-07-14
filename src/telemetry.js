@@ -1,4 +1,5 @@
 import React from 'react';
+import DataTime from './data.js';
 
 class Data extends React.Component {
   constructor() {
@@ -28,7 +29,12 @@ class Data extends React.Component {
 
   render() {
     const text = this.state.connected ? 'connected' : 'not connected';
-    return <div>{text}</div>;
+    return (
+        <div className={this.state.connected ? 'active' : null}>
+          <div>{text}</div>
+          <DataTime/>
+        </div>
+    );
   }
 };
 
