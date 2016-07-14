@@ -5,7 +5,8 @@ class Data extends React.Component {
   constructor() {
     super();
     this.state = {
-      connected: false
+      connected: false,
+      time: 0.0,
     };
 
     this.socket = new WebSocket("ws://localhost:8080/ws");
@@ -24,7 +25,8 @@ class Data extends React.Component {
 
   messageHandler(msg) {
     let data = JSON.parse(msg);
-    console.log(data);
+    this.setState({time: data.server.time});
+    //console.log(data);
   }
 
   render() {
@@ -32,7 +34,7 @@ class Data extends React.Component {
     return (
         <div className={this.state.connected ? 'active' : null}>
           <div>{text}</div>
-          <DataTime/>
+          <DataTime label="Server Timestamp" value={this.state.time}/>
         </div>
     );
   }
