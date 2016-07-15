@@ -30,11 +30,16 @@ class Data extends React.Component {
   }
 
   render() {
-    const text = this.state.connected ? 'connected' : 'not connected';
     return (
-        <div className={this.state.connected ? 'active' : null}>
-          <div>{text}</div>
-          <DataTime label="Server Timestamp" units="Unix time" value={this.state.time}/>
+        <div>
+          <article className={this.state.connected ? 'message is-success' : 'message is-warning'}>
+            <div className="message-header">
+              {this.state.connected ? 'Connected' : 'Not Connected'}
+            </div>
+          </article>
+          <nav className={this.state.connected ? 'level telemetry active' : 'level telemetry'}>
+            <DataTime label="Server Timestamp" units="Unix time" value={this.state.time}/>
+          </nav>
         </div>
     );
   }
