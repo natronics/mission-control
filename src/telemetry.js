@@ -34,7 +34,7 @@ class Data extends React.Component {
     return (
         <div className={this.state.connected ? 'active' : null}>
           <div>{text}</div>
-          <DataTime label="Server Timestamp" value={this.state.time}/>
+          <DataTime label="Server Timestamp" units="Unix time" value={this.state.time}/>
         </div>
     );
   }
