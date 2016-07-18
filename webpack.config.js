@@ -14,6 +14,7 @@ module.exports = {
   context: __dirname + "/src",
   entry: './main',
   output: {
+    path: __dirname + "/assets",
     filename: 'mission-control.js',
   },
   module: {
@@ -27,7 +28,13 @@ module.exports = {
         }
       },
       { test: /\.css$/, loader: "style-loader!css-loader" },
-      { test: /\.sass$/, loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!')) }
+      { test: /\.sass$/, loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!')) },
+      { test: /\.less$/, loader: "style!css!less" },
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
     ],
   },
   plugins: [
@@ -39,6 +46,3 @@ module.exports = {
     new ExtractTextPlugin('style.css')
   ],
 };
-
-
-
