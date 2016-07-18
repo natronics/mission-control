@@ -1,16 +1,19 @@
 @import "~bulma/bulma"
-$fa-font-path: "~font-awesome/fonts";
-@import "~font-awesome/scss/font-awesome";
+
+$fa-font-path: "~font-awesome/fonts"
+@import "~font-awesome/scss/font-awesome"
 
 $slate: #89b
+
 header
   background: $slate
   border-bottom: 3px solid darken($slate, 10%)
-  padding: 0.5em 0.5em 0 0.5em
+  padding: 0.5em
 
   h1
     @extend .title
     color: #fff
+    font-size: 18px
 
 #tabs
   @extend .tabs
