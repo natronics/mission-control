@@ -1,5 +1,5 @@
 CC=node_modules/webpack/bin/webpack.js
-JS=$(wildcard src/*.js)
+JS=$(shell find src/ -type f -name '*.js')
 SASS=$(wildcard src/style/*.sass)
 
 all: assets/mission-control.js
