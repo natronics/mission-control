@@ -20,14 +20,23 @@ class NewConnection extends React.Component {
 
             <section className="modal-card-body">
               <div className="content">
+
+                <label className="label">Connection Name</label>
+                <p className="control">
+                  <input className="input" type="text" placeholder="Rocket Telemetry" />
+                </p>
+
+                <label className="label">Server</label>
                 <p className="control">
                   <span className="select">
                     <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
+                      <option>ws://example.com (demo server)</option>
+                      <option>ws://localhost:8080 (run locally)</option>
+                      <option>ws://telemetry.psas.local (PSAS network)</option>
                     </select>
                   </span>
                 </p>
+
               </div>
             </section>
 

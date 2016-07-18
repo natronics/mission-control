@@ -27,8 +27,7 @@ class Page extends React.Component {
           <div className="container">
 
             <a className="button is-primary" onClick={this.addConnection}>
-              <span className="icon"><i className="fa fa-plus"></i></span>
-              <span>Add Connection</span>
+              <i className="fa fa-plug"></i>&nbsp;Add Connection
             </a>
 
             <NewConnection close={this.finishAddConnection} active={this.state.edit_connection} />
