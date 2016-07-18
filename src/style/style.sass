@@ -3,21 +3,29 @@
 $fa-font-path: "~font-awesome/fonts"
 @import "~font-awesome/scss/font-awesome"
 
+
 $slate: #89b
 $green: #7e5
 
 header
   background: $slate
-  border-bottom: 3px solid darken($slate, 10%)
-  padding: 0.5em
+  border-bottom: 2px solid darken($slate, 10%)
+  padding: 0.6em
 
   h1
     @extend .title
     color: #fff
     font-size: 18px
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.4)
 
-footer
+footer.footer
   font-size: 0.8em
+  text-shadow: 1px 1px 0 #fff
+  color: #bbb
+
+  .icon
+    font-size: 0.9em
+    line-height: 1.5em
 
 .green
   color: $green
@@ -26,7 +34,7 @@ footer
   left: -35%
   top: -31%
 
-i
+a i.fa
   font-size: 14px
 
 .modal-card-title span
@@ -55,20 +63,3 @@ main
   hr
     margin-top: 0
 
-.data
-
-  .units
-    font-size: 0.8em
-
-.telemetry
-
-  background: #ddd
-  color: #aaa
-
-  .level-item .title
-    color: inherit
-
-.telemetry.active
-
-  background: #fff
-  color: #444
