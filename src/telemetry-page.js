@@ -8,9 +8,13 @@ class Page extends React.Component {
     this.state = {
         connected: false,
         edit_connection: false,
+        defined: false,
+        title: "Rocket Telemetry",
     };
     this.addConnection = this.addConnection.bind(this);
     this.finishAddConnection = this.finishAddConnection.bind(this);
+    this.editTitle = this.editTitle.bind(this);
+    this.beginSession = this.beginSession.bind(this);
   }
 
   addConnection (event) {
@@ -21,7 +25,23 @@ class Page extends React.Component {
     this.setState({ edit_connection: false });
   }
 
+  beginSession (event) {
+    this.setState({ edit_connection: false, defined: true });
+    this.finishAddConnection(null);
+  }
+
+  editTitle (event) {
+    this.setState({title: event.target.value});
+  }
+
   render() {
+
+    var h;
+    if (this.state.defined) {
+        h = <div className="content"><h1>{this.state.title}</h1><hr/></div>;
+    } else {
+        h = "";
+    }
     return (
         <section className="connection">
           <div className="container">
@@ -30,7 +50,14 @@ class Page extends React.Component {
               <i className="fa fa-plug"></i>&nbsp;Add Connection
             </a>
 
-            <NewConnection close={this.finishAddConnection} active={this.state.edit_connection} />
+            <NewConnection
+                close={this.finishAddConnection}
+                active={this.state.edit_connection}
+                editTitle={this.editTitle}
+                accept={this.beginSession}
+            />
+
+            {h}
 
           </div>
         </section>

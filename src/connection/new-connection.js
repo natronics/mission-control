@@ -23,7 +23,7 @@ class NewConnection extends React.Component {
 
                 <label className="label">Connection Name</label>
                 <p className="control">
-                  <input className="input" type="text" placeholder="Rocket Telemetry" />
+                  <input className="input" type="text" placeholder="Rocket Telemetry" onChange={this.props.editTitle} />
                 </p>
 
                 <label className="label">Server</label>
@@ -41,7 +41,7 @@ class NewConnection extends React.Component {
             </section>
 
             <footer className="modal-card-foot">
-              <a className="button is-primary">Create</a>
+              <a className="button is-primary" onClick={this.props.accept}>Create</a>
               <a className="button" onClick={this.props.close}>Cancel</a>
             </footer>
           </div>
