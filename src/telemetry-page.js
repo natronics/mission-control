@@ -46,8 +46,8 @@ class Page extends React.Component {
         <section className="connection">
           <div className="container">
 
-            <a className="button is-primary" onClick={this.addConnection}>
-              <i className="fa fa-plug"></i>&nbsp;Add Connection
+            <a className="button is-primary is-outlined" onClick={this.addConnection}>
+              <span className="icon"><i className="fa fa-plus"></i></span>Add Connection
             </a>
 
             <NewConnection

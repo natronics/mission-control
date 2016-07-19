@@ -41,7 +41,10 @@ class NewConnection extends React.Component {
             </section>
 
             <footer className="modal-card-foot">
-              <a className="button is-primary" onClick={this.props.accept}>Create</a>
+              <a className="button is-primary" onClick={this.props.accept}>
+                <span className="icon"><i className="fa fa-check"></i></span>
+                Create
+              </a>
               <a className="button" onClick={this.props.close}>Cancel</a>
             </footer>
           </div>
