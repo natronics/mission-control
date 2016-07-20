@@ -15,7 +15,7 @@ class Connection {
 }
 
 /**
- * Render the page, and keep state
+ * Class to render the page, and keep state
  */
 class Page extends React.Component {
   constructor() {
@@ -27,11 +27,20 @@ class Page extends React.Component {
 
   render() {
     return (
-        <ConnectionList connections={this.state.connections} />
+        <div>
+          <ConnectionList connections={this.state.connections} />
+          <div id="connections">
+
+            { this.state.connections.length ? "" :  <section className="empty"><div className="container"><p>No connections defined.</p></div></section> }
+
+          </div>
+        </div>
     );
   }
 };
 
+
+// Finally render the page
 ReactDOM.render(
   <Page/>,
   document.getElementById('page')
