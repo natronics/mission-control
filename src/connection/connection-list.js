@@ -1,7 +1,28 @@
 import React from 'react';
 import NewConnection from './new-connection.js';
 
+
+/**
+ * Display a list of defined connections
+ */
 class ConnectionList extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+        editing: false
+    };
+    this.edit = this.edit.bind(this);
+    this.cancelEdit = this.cancelEdit.bind(this);
+  }
+
+  edit (event) {
+    this.setState({editing: true});
+  }
+
+  cancelEdit (event) {
+    this.setState({editing: false});
+  }
+
   render() { return (
     <section id="connection-list">
       <div className="container">
@@ -20,10 +41,15 @@ class ConnectionList extends React.Component {
               return <span className="connection tag">{result.name}</span>;
             })}
 
-            <a className="button is-small is-primary is-outlined">
+            <a className="button is-small is-primary is-outlined" onClick={this.edit}>
               <span className="icon is-small"><i className="fa fa-plus"></i></span>
               <span>Add Connection</span>
             </a>
+
+            <NewConnection
+              active={this.state.editing}
+              close={this.cancelEdit}
+            />
 
           </div>
          </div>
