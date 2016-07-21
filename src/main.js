@@ -17,6 +17,7 @@ class Connection {
     this.recv_desc = false;
 
     this.stream = {};
+    this.data = {};
 
     console.log("WS: Construct", this.URI);
     this.socket = new WebSocket(this.URI);
@@ -47,7 +48,8 @@ class Connection {
         this.state.setState({connections: [this]});
     }
     else {
-        console.log(data);
+        this.data = data;
+        this.state.setState({connections: [this]});
     }
   }
 
@@ -97,7 +99,7 @@ class Page extends React.Component {
                     <div className="columns">
                       <div className="column data">
                         <h3 className="title has-text-centered">{result.stream.timestamp.label}</h3>
-                        <p className="value has-text-centered">?</p>
+                        <p className="value has-text-centered">{result.data.timestamp}</p>
                       </div>
                     </div>
                   </div>
