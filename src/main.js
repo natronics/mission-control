@@ -14,6 +14,9 @@ class Connection {
     this.URI = uri;
     this.state = state;
     this.connected = false;
+    this.recv_desc = false;
+
+    this.stream = {};
 
     console.log("WS: Construct", this.URI);
     this.socket = new WebSocket(this.URI);
@@ -36,7 +39,16 @@ class Connection {
 
   messageHandler(message) {
     let data = JSON.parse(message);
-    console.log(data);
+    if (!this.recv_desc && data.describe) {
+        console.log("WS: Describe!");
+        console.log(data.describe);
+        this.recv_desc = true;
+        this.stream = data.describe.stream;
+        this.state.setState({connections: [this]});
+    }
+    else {
+        console.log(data);
+    }
   }
 
 }
@@ -77,7 +89,20 @@ class Page extends React.Component {
             { this.state.connections.length ? "" :  <section className="empty"><div className="container"><p>No connections defined.</p></div></section> }
 
             {this.state.connections.map(function(result) {
-              return <section><div className="container"><h1 className="title">{result.name}</h1><hr/></div></section>;
+              return (
+                <section className="telemetry">
+                  <div className="container">
+                    <h1 className="title">{result.name}</h1>
+                    <hr/>
+                    <div className="columns">
+                      <div className="column data">
+                        <h3 className="title has-text-centered">{result.stream.timestamp.label}</h3>
+                        <p className="value has-text-centered">?</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              );
             })}
 
 
