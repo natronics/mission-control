@@ -9,9 +9,10 @@ import ConnectionList from './connection/connection-list.js';
  * Handle a single connection
  */
 class Connection {
-  constructor(name, uri) {
+  constructor(name, uri, state) {
     this.name = name;
     this.URI = uri;
+    this.state = state;
     this.connected = false;
 
     console.log("WS: Construct", this.URI);
@@ -24,17 +25,18 @@ class Connection {
   openHandler(event) {
     console.log("WS: Open");
     this.connected = true;
+    this.state.setState({connections: [this]});
   }
 
   closeHandler(event) {
     console.log("WS: Close");
     this.connected = false;
+    this.state.setState({connections: [this]});
   }
 
   messageHandler(message) {
-    //let data = JSON.parse(message);
-    //console.log(data);
-    console.log(message);
+    let data = JSON.parse(message);
+    console.log(data);
   }
 
 }
@@ -58,7 +60,7 @@ class Page extends React.Component {
 
   createConnection (name, i) {
     var option = this.state.connectionoptions[i];
-    var conn = new Connection(name, option.socket);
+    var conn = new Connection(name, option.socket, this);
     this.setState({connections: this.state.connections.concat([conn])});
   }
 
