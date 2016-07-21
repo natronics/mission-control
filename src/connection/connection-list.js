@@ -44,7 +44,7 @@ class ConnectionList extends React.Component {
             { this.props.connections.length ? "" : <span className="connection tag">none</span> }
 
             {this.props.connections.map(function(result) {
-              return <span className="connection tag">{result.name}</span>;
+              return <span className={result.connected ? "connection tag is-success" : "connection tag is-danger"}>{result.connected ? <i className="fa fa-check" aria-hidden="true"></i> : <i className="fa fa-ban" aria-hidden="true"></i>}&nbsp;&nbsp;{result.name}</span>;
             })}
 
             <a className="button is-small is-primary is-outlined" onClick={this.edit}>

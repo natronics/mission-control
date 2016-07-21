@@ -11,6 +11,7 @@ import ConnectionList from './connection/connection-list.js';
 class Connection {
   constructor(name) {
     this.name = name;
+    this.connected = false;
   }
 }
 
@@ -32,7 +33,9 @@ class Page extends React.Component {
   }
 
   createConnection (i) {
-    console.log(this.state.connectionoptions[i]);
+    var option = this.state.connectionoptions[i];
+    var conn = new Connection(option.name);
+    this.setState({connections: this.state.connections.concat([conn])});
   }
 
   render() {
@@ -46,6 +49,11 @@ class Page extends React.Component {
           <div id="connections">
 
             { this.state.connections.length ? "" :  <section className="empty"><div className="container"><p>No connections defined.</p></div></section> }
+
+            {this.state.connections.map(function(result) {
+              return <section><div className="container"><h1 className="title">{result.name}</h1><hr/></div></section>;
+            })}
+
 
           </div>
         </div>
