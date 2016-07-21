@@ -32,9 +32,9 @@ class Page extends React.Component {
     this.createConnection = this.createConnection.bind(this);
   }
 
-  createConnection (i) {
+  createConnection (name, i) {
     var option = this.state.connectionoptions[i];
-    var conn = new Connection(option.name);
+    var conn = new Connection(name);
     this.setState({connections: this.state.connections.concat([conn])});
   }
 

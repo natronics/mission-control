@@ -5,10 +5,16 @@ class NewConnection extends React.Component {
     super();
     this.state = {
         complete: false,
+        title: "Rocket Telemetry",
         index: 0,
     };
+    this.editTitle = this.editTitle.bind(this);
     this.choose = this.choose.bind(this);
     this.create = this.create.bind(this);
+  }
+
+  editTitle (event) {
+    this.setState({title: event.target.value});
   }
 
   choose (event) {
@@ -16,7 +22,7 @@ class NewConnection extends React.Component {
   }
 
   create (event) {
-    this.props.newConnection(this.state.index);
+    this.props.newConnection(this.state.title, this.state.index);
   }
 
   render() {
@@ -41,7 +47,7 @@ class NewConnection extends React.Component {
 
                 <label className="label">Connection Name</label>
                 <p className="control">
-                  <input className="input" type="text" placeholder="Rocket Telemetry" onChange={this.props.editTitle} />
+                  <input className="input" type="text" placeholder="Rocket Telemetry" onChange={this.editTitle} />
                 </p>
 
                 <label className="label">Server</label>

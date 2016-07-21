@@ -24,8 +24,8 @@ class ConnectionList extends React.Component {
     this.setState({editing: false});
   }
 
-  newConn (i) {
-    this.props.create(i);
+  newConn (name, i) {
+    this.props.create(name, i);
     this.setState({editing: false});
   }
 
