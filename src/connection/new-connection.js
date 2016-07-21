@@ -1,6 +1,24 @@
 import React from 'react';
 
 class NewConnection extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+        complete: false,
+        index: 0,
+    };
+    this.choose = this.choose.bind(this);
+    this.create = this.create.bind(this);
+  }
+
+  choose (event) {
+    this.setState({complete: true, index: event.target.selectedIndex - 1});
+  }
+
+  create (event) {
+    this.props.newConnection(this.state.index);
+  }
+
   render() {
     return (
         <div className={this.props.active ? 'modal is-active' : 'modal'}>
@@ -28,11 +46,13 @@ class NewConnection extends React.Component {
 
                 <label className="label">Server</label>
                 <p className="control">
-                  <span className="select">
-                    <select>
-                      <option>ws://example.com (demo server)</option>
-                      <option>ws://localhost:8080 (run locally)</option>
-                      <option>ws://telemetry.psas.local (PSAS network)</option>
+                  <span className="select is-fullwidth">
+                    <select onChange={this.choose}>
+                        <option disabled selected>Choose...</option>
+                      {this.props.options.map(function(result) {
+                        return <option>{result.name} ({result.socket})</option>;
+                      })}
+
                     </select>
                   </span>
                 </p>
@@ -41,7 +61,7 @@ class NewConnection extends React.Component {
             </section>
 
             <footer className="modal-card-foot">
-              <a className="button is-primary" onClick={this.props.accept}>
+              <a className="button is-primary" disabled={!this.state.complete} onClick={this.create}>
                 <span className="icon is-small"><i className="fa fa-check"></i></span>
                 <span>Create</span>
               </a>

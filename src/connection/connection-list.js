@@ -13,6 +13,7 @@ class ConnectionList extends React.Component {
     };
     this.edit = this.edit.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
+    this.newConn = this.newConn.bind(this);
   }
 
   edit (event) {
@@ -20,6 +21,11 @@ class ConnectionList extends React.Component {
   }
 
   cancelEdit (event) {
+    this.setState({editing: false});
+  }
+
+  newConn (i) {
+    this.props.create(i);
     this.setState({editing: false});
   }
 
@@ -49,6 +55,8 @@ class ConnectionList extends React.Component {
             <NewConnection
               active={this.state.editing}
               close={this.cancelEdit}
+              options={this.props.options}
+              newConnection={this.newConn}
             />
 
           </div>
