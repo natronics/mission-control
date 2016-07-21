@@ -9,10 +9,34 @@ import ConnectionList from './connection/connection-list.js';
  * Handle a single connection
  */
 class Connection {
-  constructor(name) {
+  constructor(name, uri) {
     this.name = name;
+    this.URI = uri;
+    this.connected = false;
+
+    console.log("WS: Construct", this.URI);
+    this.socket = new WebSocket(this.URI);
+    this.socket.onopen = this.openHandler.bind(this);
+    this.socket.onclose = this.closeHandler.bind(this);
+    this.socket.onmessage = (message) => { this.messageHandler(message.data); };
+  }
+
+  openHandler(event) {
+    console.log("WS: Open");
+    this.connected = true;
+  }
+
+  closeHandler(event) {
+    console.log("WS: Close");
     this.connected = false;
   }
+
+  messageHandler(message) {
+    //let data = JSON.parse(message);
+    //console.log(data);
+    console.log(message);
+  }
+
 }
 
 /**
@@ -34,7 +58,7 @@ class Page extends React.Component {
 
   createConnection (name, i) {
     var option = this.state.connectionoptions[i];
-    var conn = new Connection(name);
+    var conn = new Connection(name, option.socket);
     this.setState({connections: this.state.connections.concat([conn])});
   }
 
